@@ -117,6 +117,8 @@ class ChefAPI(object):
                 value = cls.ruby_value_re.sub(_ruby_value, value)
             except UnknownRubyExpression:
                 continue
+            # Set defaults
+            key_path = '/etc/chef/client.pem'
             if key == 'chef_server_url':
                 log.debug('Found URL: %r', value)
                 url = value
