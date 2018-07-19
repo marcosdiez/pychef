@@ -84,6 +84,8 @@ class ChefAPI(object):
             log.debug('Unable to read config file "%s"', path)
             return
         url = key_path = client_name = None
+        # Set defaults
+        key_path = '/etc/chef/client.pem'
         ssl_verify = True
         for line in open(path):
             if not line.strip() or line.startswith('#'):
@@ -117,8 +119,6 @@ class ChefAPI(object):
                 value = cls.ruby_value_re.sub(_ruby_value, value)
             except UnknownRubyExpression:
                 continue
-            # Set defaults
-            key_path = '/etc/chef/client.pem'
             if key == 'chef_server_url':
                 log.debug('Found URL: %r', value)
                 url = value
