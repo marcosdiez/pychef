@@ -59,7 +59,7 @@ class ChefObject(six.with_metaclass(ChefObjectMeta, object)):
             except ChefServerNotFoundError:
                 pass
             except TypeError:
-                pass
+                raise RuntimeError("Unable to load api object. Are we running in a thread?")
             else:
                 self.exists = True
         self._populate(data)
