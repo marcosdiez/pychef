@@ -58,6 +58,8 @@ class ChefObject(six.with_metaclass(ChefObjectMeta, object)):
                 data = self.api[self.url]
             except ChefServerNotFoundError:
                 pass
+            except TypeError:
+                pass
             else:
                 self.exists = True
         self._populate(data)
