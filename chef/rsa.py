@@ -1,3 +1,5 @@
+import os
+import re
 import six
 import sys
 from ctypes import *
@@ -5,6 +7,16 @@ from ctypes.util import find_library
 
 if sys.platform == 'win32' or sys.platform == 'cygwin':
     _eay = CDLL('libeay32.dll')
+elif sys.platform == 'darwin':
+    # on osx 10.15 a version must be specified to use libcrypto
+    # We are just going to grab the latest since we used latest before
+    libcrypto_versions = []
+    for lib in os.listdir('/usr/lib'):
+        if re.search('libcrypto\.[0-9]+\.dylib', lib):
+            libcrypto_versions.append(lib)
+    libcrypto_versions.sort()
+
+    _eay = CDLL(libcrypto_versions[-1])
 else:
     _eay = CDLL(find_library('crypto'))
 
