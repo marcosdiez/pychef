@@ -1,8 +1,7 @@
-PyChef
-======
+PyChefRevival
+=============
 
-.. image:: https://secure.travis-ci.org/coderanger/pychef.svg?branch=master
-    :target: http://travis-ci.org/coderanger/pychef
+A revival of https://github.com/coderanger/pychef
 
 A Python API for interacting with a Chef server.
 
@@ -22,4 +21,5 @@ Example
 Further Reading
 ---------------
 
+Current Documentation:
 For more information check out http://pychef.readthedocs.org/en/latest/index.html
