@@ -84,6 +84,8 @@ class ChefAPI(object):
             log.debug('Unable to read config file "%s"', path)
             return
         url = key_path = client_name = None
+        # Set defaults
+        key_path = '/etc/chef/client.pem'
         ssl_verify = True
         for line in open(path):
             if not line.strip() or line.startswith('#'):
