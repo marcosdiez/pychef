@@ -1,6 +1,10 @@
 import six
 import abc
-import collections
+try:
+    # python >= 3.3
+    import collections.abc as collections
+except ImportError:
+    import collections
 
 from chef.api import ChefAPI
 from chef.base import ChefObject, ChefQuery, ChefObjectMeta

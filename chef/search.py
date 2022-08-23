@@ -1,5 +1,9 @@
 import six
-import collections
+try:
+    # python >= 3.3
+    import collections.abc as collections
+except ImportError:
+    import collections
 import copy
 import six.moves.urllib.parse
 
@@ -32,17 +36,17 @@ class SearchRow(dict):
 
 class Search(collections.Sequence):
     """A search of the Chef index.
-    
+
     The only required argument is the index name to search (eg. node, role, etc).
     The second, optional argument can be any Solr search query, with the same semantics
     as Chef.
-    
+
     Example::
-    
+
         for row in Search('node', 'roles:app'):
             print row['roles']
             print row.object.name
-    
+
     .. versionadded:: 0.1
     """
 

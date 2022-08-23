@@ -1,5 +1,10 @@
 import six
-import collections
+
+try:
+    # python >= 3.3
+    import collections.abc as collections
+except ImportError:
+    import collections
 
 from chef.base import ChefObject
 from chef.exceptions import ChefError
